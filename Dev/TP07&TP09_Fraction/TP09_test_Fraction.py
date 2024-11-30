@@ -40,7 +40,4 @@ class FactTestCase(unittest.TestCase) :
         
 
 if __name__ == '__main__':
-    # ATTENTION : Pour exécuter ce test dans un notebook, il faut utiliser un appel à unittest.main() modifié. 
-    # Dans PyCharm, vous pouvez utiliser la version normale sans paramètre, cfr ci-dessous.  
-    # unittest.main()
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
