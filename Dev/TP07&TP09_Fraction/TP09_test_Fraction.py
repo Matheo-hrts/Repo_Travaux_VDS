@@ -37,7 +37,7 @@ class FactTestCase(unittest.TestCase) :
         self.assertEqual(str(test6.is_adjacent_to(test7)),'True', 'Fraction is_adjacent_to True')
 
     def test_fraction_div_0(self):
-        self.assertRaises(ValueError, Fraction, (2,0))
+        self.assertRaises(ValueError, Fraction, 2, 0)
         
 
 if __name__ == '__main__':
