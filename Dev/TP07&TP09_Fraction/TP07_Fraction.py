@@ -135,6 +135,7 @@ class Fraction:
 
         PRE : '__num' and '__den', 'other.__num' and 'other.__den'
         POST : Return an instance of a fraction that is the quotient of self and other.
+        RAISES : ValueError if other is 0.
         """
         if not isinstance(other, Fraction) :
             other = Fraction(other)
