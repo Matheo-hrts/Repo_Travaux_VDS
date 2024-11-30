@@ -1,5 +1,4 @@
 import unittest
-import math
 from TP07_Fraction import Fraction
 
 class FactTestCase(unittest.TestCase) : 
