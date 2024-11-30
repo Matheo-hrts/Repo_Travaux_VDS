@@ -3,7 +3,7 @@ from TP07_Fraction import Fraction
 
 class FactTestCase(unittest.TestCase) : 
 
-    def test_fraction_oparators(self):
+    def test_fraction_oparators_with_two_fractions(self):
         test1 = Fraction(2,3)
         test2 = Fraction(3,2)
         test3 = Fraction(4,6)
@@ -16,6 +16,18 @@ class FactTestCase(unittest.TestCase) :
         self.assertEqual((test1 == test2),False, 'Fraction eq False')
         self.assertEqual((test1 == test3),True, 'Fraction eq True')
         self.assertEqual((float(test1)),2/3, 'Fraction float')
+
+    def test_fraction_operators_with_other_as_int(self):
+        test1 = Fraction(2, 3)
+        test2 = Fraction(2, 1)
+        self.assertEqual((test1 + 2),Fraction(8,3), 'Fraction add')
+        self.assertEqual((test1 - 2),Fraction(-4,3), 'Fraction sub')
+        self.assertEqual((test1 * 2),Fraction(4,3), 'Fraction mul')
+        self.assertEqual((test1 / 2),Fraction(1,3), 'Fraction div')
+        self.assertEqual((test1 ** 2),Fraction(4,9), 'Fraction power')
+        self.assertEqual((test1 == 2),False, 'Fraction eq False')
+        self.assertEqual((test2 == 2),True, 'Fraction eq True')
+
     
     def test_fraction_properties(self):
         test1 = Fraction(2,3)
@@ -38,3 +50,11 @@ class FactTestCase(unittest.TestCase) :
 
     def test_fraction_div_0(self):
         self.assertRaises(ValueError, Fraction, 2, 0)
+        self.assertRaises(TypeError, Fraction, 2.0, 3)
+        self.assertRaises(TypeError, Fraction, 2, 3.0)
+        with self.assertRaises(ValueError):
+            Fraction(2,3) / Fraction(0,2)
+        
+
+if __name__ == '__main__':
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
