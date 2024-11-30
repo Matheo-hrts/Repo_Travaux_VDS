@@ -27,6 +27,8 @@ class FactTestCase(unittest.TestCase) :
         self.assertEqual((test1 ** 2),Fraction(4,9), 'Fraction power')
         self.assertEqual((test1 == 2),False, 'Fraction eq False')
         self.assertEqual((test2 == 2),True, 'Fraction eq True')
+        self.assertEqual((test1.is_adjacent_to(2)),False, 'Fraction is_adjacent_to False')
+        self.assertEqual((test2.is_adjacent_to(1)),True, 'Fraction is_adjacent_to True')
 
     
     def test_fraction_properties(self):
