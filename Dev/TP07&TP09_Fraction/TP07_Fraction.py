@@ -70,7 +70,7 @@ class Fraction:
         reduced_den = self.__den // gcd
         return f"{reduced_num}/{reduced_den}"
 
-    def as_mixed__number(self) :
+    def as_mixed_number(self) :
         """Return a textual representation of the reduced form of the fraction as a mixed number
 
         A mixed number is the sum of an integer and a proper fraction
