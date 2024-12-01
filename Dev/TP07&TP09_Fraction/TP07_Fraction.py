@@ -171,11 +171,11 @@ class Fraction:
         
         gcd_self = math.gcd(self.__num, self.__den)
         gcd_other = math.gcd(other.__num, other.__den)
-        reduced_self__num = self.__num // gcd_self
-        reduced_self___den = self.__den // gcd_self
-        reduced_other__num = other.__num // gcd_other
-        reduced_other___den = other.__den // gcd_other
-        return reduced_self__num == reduced_other__num and reduced_self___den == reduced_other___den
+        reduced_self_num = self.__num // gcd_self
+        reduced_self_den = self.__den // gcd_self
+        reduced_other_num = other.__num // gcd_other
+        reduced_other_den = other.__den // gcd_other
+        return reduced_self_num == reduced_other_num and reduced_self_den == reduced_other_den
 
         
     def __float__(self) :
@@ -239,8 +239,8 @@ class Fraction:
             other = Fraction(other)
 
         num_diff = abs(self.__num * other.__den - self.__den * other.__num)
-        __den_diff = self.__den * other.__den
-        gcd = math.gcd(num_diff, __den_diff)
-        reduced__num = num_diff // gcd
-        reduced___den = __den_diff // gcd
-        return reduced__num == 1 and reduced___den > 0
+        den_diff = self.__den * other.__den
+        gcd = math.gcd(num_diff, den_diff)
+        reduced_num = num_diff // gcd
+        reduced_den = den_diff // gcd
+        return reduced_num == 1 and reduced_den > 0
