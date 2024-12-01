@@ -5,7 +5,7 @@ import math
 class Fraction:
     """Class representing a fraction and operations on it
 
-    Author : V. Van __den Schrieck
+    Author : V. Van den Schrieck
     Date : October 2021
     This class allows fraction manipulations through several operations.
     """
@@ -141,7 +141,7 @@ class Fraction:
             other = Fraction(other)
 
         if(other.is_zero()) :
-            raise ValueError('le __denominateur ne peux être égale a 0')
+            raise ValueError('le denominateur ne peux être égale a 0')
         return self * Fraction(other.__den, other.__num)
 
 
