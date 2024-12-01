@@ -48,7 +48,7 @@ class Fraction:
         PRE : 'new_den' is an integers.
         POST : '__den' is set.
         RAISES : TypeError if 'new_den' is not an integer. 
-                 Value if 'new_den' is equal to 0.
+                 ValueError if 'new_den' is equal to 0.
         """
         if(type(new_den) != int) :
             raise TypeError('The denominator need to be an integer')
