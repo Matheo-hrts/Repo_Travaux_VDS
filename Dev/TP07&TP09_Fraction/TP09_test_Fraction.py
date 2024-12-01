@@ -3,11 +3,21 @@ from TP07_Fraction import Fraction
 
 class FactTestCase(unittest.TestCase) : 
 
+    def test_init_fraction(self):
+        test1 = Fraction(2,3)
+        self.assertEqual(test1, Fraction(2,3), 'Fraction init')
+
+    def test_strings(self):
+        test1 = Fraction(2,3)
+        test2 = Fraction(7,3)
+        self.assertEqual(str(test1),'2/3', 'Fraction str')
+        self.assertEqual(str(test1.as_mixed_number()),'la fonction est propre et ne peux pas etre convertie en nombre mixte', 'Fraction mixed')
+        self.assertEqual(str(test2.as_mixed_number()),'2*1/3', 'Fraction mixed')
+
     def test_fraction_oparators_with_two_fractions(self):
         test1 = Fraction(2,3)
         test2 = Fraction(3,2)
         test3 = Fraction(4,6)
-        self.assertEqual(str(test1),'2/3', 'Fraction str')
         self.assertEqual((test1 + test2),Fraction(13,6), 'Fraction add')
         self.assertEqual((test1 - test2),Fraction(-5,6), 'Fraction sub')
         self.assertEqual((test1 * test2),Fraction(1,1), 'Fraction mul')
