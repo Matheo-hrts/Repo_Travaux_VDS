@@ -114,9 +114,9 @@ class FactTestCase(unittest.TestCase) :
         test1 = Fraction(-8,12)
         test2 = Fraction(4,2)
         test3 = Fraction(100, 1000)
-        self.assertEqual(float(test1),-8/12, 'Fraction add')
-        self.assertEqual(float(test2),4/2, 'Fraction add')
-        self.assertEqual(float(test3),100/1000, 'Fraction add')
+        self.assertEqual(float(test1),-8/12, 'Fraction float')
+        self.assertEqual(float(test2),4/2, 'Fraction float')
+        self.assertEqual(float(test3),100/1000, 'Fraction float')
 
     def test_is_zero(self):
         test1 = Fraction(0,13)
