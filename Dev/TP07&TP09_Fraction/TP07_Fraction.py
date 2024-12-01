@@ -83,7 +83,7 @@ class Fraction:
         else :
             quotient = self.__num // self.__den
             remainder = self.__num - self.__den * quotient
-            return f'le nombre mixte de cette fraction est {quotient}*{remainder}/{self.__den}.'
+            return f'{quotient}*{remainder}/{self.__den}'
 
 # ------------------ Operators overloading ------------------
 
