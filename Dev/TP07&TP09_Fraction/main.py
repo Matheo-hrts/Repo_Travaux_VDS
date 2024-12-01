@@ -1,0 +1,18 @@
+from TP07_Fraction import Fraction
+
+test1 = Fraction(2,3)
+test2 = Fraction(5,8)
+print(test1)
+print(test1.as_mixed_number())
+print(test1 + test2)
+print(test1 - test2)
+print(test1 * test2)
+print(test1 / test2)
+print(test1 ** test2)
+print(test1 == test2)
+print(float(test1))
+print(test1.is_zero())
+print(test1.is_integer())
+print(test1.is_proper())
+print(test1.is_unit())
+print(test1.is_adjacent_to(test2))
