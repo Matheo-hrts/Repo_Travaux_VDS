@@ -3,6 +3,8 @@ import os
 
 """ Ce code a été écrit avec l'aide de ChatGPT """
 
+# Préconditions et postconditions ajoutées pour chaque fonction.
+
 
 def write_csv(file, name, quantity, price, category):
     """
@@ -105,44 +107,6 @@ def write_option():
                   list_input[2], list_input[3], list_input[4])
 
 
-def what_to_do():
-    """
-    Préconditions:
-    - L'utilisateur fournit une commande valide parmi: r, w, m, s, exit
-
-    Postconditions:
-    - Exécute l'action correspondant à la commande.
-    - Relance le menu en cas d'entrée incorrecte.
-    """
-    first_input = input('read [r] write [w] merge [m] sort [s] quit [exit]' +
-                        '\nWhat do you want to do ? : ')
-
-    if first_input == 'w':
-        write_option()
-
-    elif first_input == 'm':
-        merge_csv('CSV', 'merged_csv/merge.csv')
-
-    elif first_input == 'r':
-        read = input('Which file do you want to read ? : ')
-
-        try:
-            print_csv(read)
-
-        except FileNotFoundError:
-            what_to_do()
-
-    elif first_input == 's':
-        sort_csv('merged_csv/merge.csv')
-
-    elif first_input == 'exit':
-        exit()
-
-    else:
-        print("Plase enter a valid option")
-        what_to_do()
-
-
 def sort_csv(file_input):
     """
     Préconditions:
@@ -190,6 +154,44 @@ def sort_csv(file_input):
                     writer = csv.DictWriter(file, fieldnames=reader.fieldnames)
                     writer.writeheader()  # Écrire l'en-tête
                     writer.writerows(sorted_lines)  # Écrire les lignes triées
+
+
+def what_to_do():
+    """
+    Préconditions:
+    - L'utilisateur fournit une commande valide parmi: r, w, m, s, exit
+
+    Postconditions:
+    - Exécute l'action correspondant à la commande.
+    - Relance le menu en cas d'entrée incorrecte.
+    """
+    first_input = input('read [r] write [w] merge [m] sort [s] quit [exit]' +
+                        '\nWhat do you want to do ? : ')
+
+    if first_input == 'w':
+        write_option()
+
+    elif first_input == 'm':
+        merge_csv('CSV', 'merged_csv/merge.csv')
+
+    elif first_input == 'r':
+        read = input('Which file do you want to read ? : ')
+
+        try:
+            print_csv(read)
+
+        except FileNotFoundError:
+            what_to_do()
+
+    elif first_input == 's':
+        sort_csv('merged_csv/merge.csv')
+
+    elif first_input == 'exit':
+        exit()
+
+    else:
+        print("Plase enter a valid option")
+        what_to_do()
 
 
 if __name__ == '__main__':
