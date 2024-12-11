@@ -3,8 +3,6 @@ import os
 
 """ Ce code a été écrit avec l'aide de ChatGPT """
 
-# Préconditions et postconditions ajoutées pour chaque fonction.
-
 
 def write_csv(file, name, quantity, price, category):
     """
