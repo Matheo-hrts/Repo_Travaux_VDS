@@ -3,9 +3,19 @@ import os
 
 """ Ce code a été écrit avec l'aide de ChatGPT """
 
+# Préconditions et postconditions ajoutées pour chaque fonction.
+
 
 def write_csv(file, name, quantity, price, category):
+    """
+    Préconditions:
+    - 'file' est une chaîne de caractères correspondant au nom du fichier cible.
+    - 'name', 'quantity', 'price', 'category' sont des valeurs valides à ajouter dans le CSV.
 
+    Postconditions:
+    - Ajoute une ligne avec les données spécifiées au fichier CSV indiqué.
+    - Crée le fichier s'il n'existe pas.
+    """
     try:
         with open(f'CSV/{file}', 'a', encoding='utf-8') as CSV_file:
             CSV_file.write(f'{name},{quantity},{price},{category}\n')
@@ -15,7 +25,14 @@ def write_csv(file, name, quantity, price, category):
 
 
 def print_csv(path):
+    """
+    Préconditions:
+    - 'path' est un chemin valide vers un fichier CSV existant.
 
+    Postconditions:
+    - Affiche chaque ligne du fichier CSV au format:
+      line {i} : name = {name}, quantity = {quantity}, price = {price}, category = {category}.
+    """
     with open(path, 'r') as CSV_file:
         reader = csv.reader(CSV_file)
         i = 0
@@ -25,11 +42,19 @@ def print_csv(path):
 
             if i != 1:
                 print(f'line {i} : name = {line[0]}, quantity = {line[1]},' +
-                      'price = {line[2]}, category = {line[3]}.')
+                      f'price = {line[2]}, category = {line[3]}.')
 
 
 def merge_csv(directory, file_output):
+    """
+    Préconditions:
+    - 'directory' est un chemin valide vers un répertoire contenant des fichiers CSV.
+    - 'file_output' est un chemin valide pour le fichier de sortie.
 
+    Postconditions:
+    - Fusionne tous les fichiers CSV du répertoire dans un seul fichier.
+    - Crée un fichier CSV de sortie avec les données fusionnées.
+    """
     # Vérifie si le dossier existe
     if not os.path.exists(directory):
         raise FileNotFoundError('Le dossier n\'exitste pas')
@@ -59,7 +84,14 @@ def merge_csv(directory, file_output):
 
 
 def write_option():
+    """
+    Préconditions:
+    - L'utilisateur fournit une chaîne de caractères sous le format: file,name,quantity,price,category
 
+    Postconditions:
+    - Ajoute les données au fichier spécifié.
+    - Redemande une entrée si le format est incorrect.
+    """
     write_input = input('what do you want to write ? : ')
 
     if write_input == 'exit':
@@ -76,7 +108,14 @@ def write_option():
 
 
 def what_to_do():
+    """
+    Préconditions:
+    - L'utilisateur fournit une commande valide parmi: r, w, m, s, exit
 
+    Postconditions:
+    - Exécute l'action correspondant à la commande.
+    - Relance le menu en cas d'entrée incorrecte.
+    """
     first_input = input('read [r] write [w] merge [m] sort [s] quit [exit]' +
                         '\nWhat do you want to do ? : ')
 
@@ -107,7 +146,15 @@ def what_to_do():
 
 
 def sort_csv(file_input):
+    """
+    Préconditions:
+    - 'file_input' est un chemin valide vers un fichier CSV existant.
+    - L'utilisateur fournit une colonne valide pour le tri: name, quantity, price, category
 
+    Postconditions:
+    - Trie le fichier CSV selon la colonne spécifiée.
+    - Affiche les données triées et offre la possibilité de les sauvegarder.
+    """
     sort_column = input('name quantity price category\n' +
                         'On what do you want to sort ? : ')
 
@@ -131,8 +178,8 @@ def sort_csv(file_input):
             else:
                 sorted_lines = sorted(lignes, key=lambda x: x[sort_column])
             for i in sorted_lines:
-                print(f'name = {i['name']}, quantity = {i['quantity']},' +
-                      f' price = {i['price']}, category = {i['category']}.')
+                print(f"name = {i['name']}, quantity = {i['quantity']}," +
+                      f" price = {i['price']}, category = {i['category']}.")
 
             save = input('Do you want to save that sorted list ? : ')
             if (save == '' or save == 'y' or save == 'Y' or
