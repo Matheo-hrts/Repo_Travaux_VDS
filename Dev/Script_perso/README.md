@@ -7,8 +7,8 @@ si ce fichier n'existe pas la question vous sera reposer
 
 Si vous choisissez d'écrire (write) vous serez demander ce que vous voulez écrire au format 'file name,name,quantity,price,category'.
 
-Si vous choisissez de fusionner (merge) tout les fichier du dossier CSV/ seront fuisonner en un seul .csv dans le dossier merged_csv/.
+Si vous choisissez de fusionner (merge) tout les fichier du dossier CSV/ seront fuisonner en un seul .csv dans le dossier merged_csv/ si celui-ci n'existe pas il sera automatiquement creer.
 
 Si vous choisissez de trier (sort) vous serez demander sur quel colonne vous voulez trier, ensuite vous aurez une prévisualisation du tri, 
 vous serez ensuite demander si vous voulez sauvegarder ce fichier (si vous le voulez taper 'y' ou 'yes') 
-vous serez alors demander comment voulez vous nommer le fichier (entrez n'importe quel nom sons extension).
+vous serez alors demander comment voulez vous nommer le fichier (entrez n'importe quel nom sans extension).
