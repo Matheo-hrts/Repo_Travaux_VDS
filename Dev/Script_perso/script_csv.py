@@ -9,16 +9,16 @@ class file_csv():
 
     def write_csv(self, file, name, quantity, price, category):
         """
-        Préconditions:
-        - 'file' est une chaîne de caractères correspondant
-        au nom du fichier cible.
-        - 'name', 'quantity', 'price', 'category' sont
-        des valeurs valides à ajouter dans le CSV.
-
-        Postconditions:
-        - Ajoute une ligne avec les données spécifiées au fichier CSV indiqué.
-        - Crée le fichier s'il n'existe pas.
+        - PRE:
+            - 'file' est une chaîne de caractères correspondant au nom du fichier cible.
+            - 'name', 'quantity', 'price', 'category' sont des valeurs valides à ajouter dans le CSV.
+        - POST:
+            - Ajoute une ligne avec les données spécifiées au fichier CSV indiqué.
+            - Crée le fichier s'il n'existe pas.
+        - RAISE:
+            - IOError si une erreur d'écriture survient.
         """
+        
         directory = 'CSV'
 
         if not os.path.exists(directory):
@@ -34,14 +34,15 @@ class file_csv():
 
     def print_csv(self, path):
         """
-        Préconditions:
-        - 'path' est un chemin valide vers un fichier CSV existant.
-
-        Postconditions:
-        - Affiche chaque ligne du fichier CSV au format:
-        line {i} : name = {name}, quantity = {quantity}, price = {price},
-        category = {category}.
+        - PRE:
+            - 'path' est un chemin valide vers un fichier CSV existant.
+        - POST:
+            - Affiche chaque ligne du fichier CSV au format:
+              line {i} : name = {name}, quantity = {quantity}, price = {price}, category = {category}.
+        - RAISE:
+            - FileNotFoundError si le fichier spécifié n'existe pas.
         """
+
         with open(path, 'r') as CSV_file:
             reader = csv.reader(CSV_file)
             i = 0
@@ -55,15 +56,18 @@ class file_csv():
 
     def merge_csv(self, directory, directory_output, file_output):
         """
-        Préconditions:
-        - 'directory' est un chemin valide vers un répertoire contenant
-        des fichiers CSV.
-        - 'file_output' est un chemin valide pour le fichier de sortie.
-
-        Postconditions:
-        - Fusionne tous les fichiers CSV du répertoire dans un seul fichier.
-        - Crée un fichier CSV de sortie avec les données fusionnées.
+        - PRE:
+            - 'directory' est un chemin valide vers un répertoire contenant des fichiers CSV.
+            - 'file_output' est un chemin valide pour le fichier de sortie.
+        - POST:
+            - Fusionne tous les fichiers CSV du répertoire dans un seul fichier.
+            - Crée un fichier CSV de sortie avec les données fusionnées.
+        - RAISE:
+            - FileNotFoundError si le répertoire source ou le fichier de sortie est introuvable.
+            - FileNotFoundError si aucun fichier CSV n'est trouvé dans le répertoire.
+            - IOError si une erreur survient lors de la lecture ou l'écriture des fichiers.
         """
+
         # Vérifie si le dossier existe
         if not os.path.exists(directory):
             raise FileNotFoundError('Le dossier n\'exitste pas')
@@ -98,14 +102,15 @@ class file_csv():
 
     def write_option(self):
         """
-        Préconditions:
-        - L'utilisateur fournit une chaîne de caractères sous le format:
-        file,name,quantity,price,category
-
-        Postconditions:
-        - Ajoute les données au fichier spécifié.
-        - Redemande une entrée si le format est incorrect.
+        - PRE:
+            - L'utilisateur fournit une chaîne de caractères sous le format: file,name,quantity,price,category.
+        - POST:
+            - Ajoute les données au fichier spécifié.
+            - Redemande une entrée si le format est incorrect.
+        - RAISE:
+            - ValueError si le format de l'entrée est incorrect.
         """
+
         write_input = input('what do you want to write ? : ')
 
         if write_input == 'exit':
@@ -122,15 +127,16 @@ class file_csv():
 
     def sort_csv(self, directory_input, file_input):
         """
-        Préconditions:
-        - 'file_input' est un chemin valide vers un fichier CSV existant.
-        - L'utilisateur fournit une colonne valide pour le tri:
-        name, quantity, price, category
-
-        Postconditions:
-        - Trie le fichier CSV selon la colonne spécifiée.
-        - Affiche les données triées et
-          offre la possibilité de les sauvegarder.
+        - PRE:
+            - 'file_input' est un chemin valide vers un fichier CSV existant.
+            - L'utilisateur fournit une colonne valide pour le tri: name, quantity, price, category.
+        - POST:
+            - Trie le fichier CSV selon la colonne spécifiée.
+            - Affiche les données triées.
+            - Offre la possibilité de sauvegarder les données triées.
+        - RAISE:
+            - FileNotFoundError si le fichier ou le répertoire n'existe pas.
+            - ValueError si la colonne spécifiée pour le tri est invalide.
         """
 
         sort_column = input('name quantity price category\n'
@@ -184,6 +190,15 @@ class file_csv():
                         writer.writerows(sorted_lines)
 
     def what_to_do(self):
+        """
+        - PRE:
+            - L'utilisateur exécute le script avec un argument valide: write, read, merge, sort.
+        - POST:
+            - Exécute l'action demandée en fonction de l'argument fourni.
+            - Guide l'utilisateur pour les actions interactives.
+        - RAISE:
+            - ValueError si l'argument fourni est invalide ou manquant.
+        """
 
         parser = argparse.ArgumentParser(description="A script to read, write, merge and sort CSV files.")
         parser.add_argument("action", choices=["write", "read", "merge", "sort"], help="Action à effectuer", nargs="?")
