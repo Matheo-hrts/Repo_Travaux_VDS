@@ -50,7 +50,7 @@ class file_csv():
                 i += 1
 
                 if i != 1:
-                    print(f'line {i} : name = {line[0]}, quantity = {line[1]},'
+                    print(f'line {i-1} : name = {line[0]}, quantity = {line[1]},'
                           + f'price = {line[2]}, category = {line[3]}.')
 
     def merge_csv(self, directory, directory_output, file_output):
@@ -216,4 +216,3 @@ if __name__ == '__main__':
 
     test = file_csv()
     test.what_to_do()
-
