@@ -1,5 +1,4 @@
-Pour utiliser ce code il suffit de le lancer, 
-dans la ligne de commande vous serez demander ce que vous voulez faire avec les option proposer et comment les écrire entre [].
+Pour utiliser ce script il faut lors du lancment indiquer ce que vous compter faire (ex: ``python script_csv.py read`` si vous voulez lire un ficher) les différentes possibilité sont ``read write merge sort``.
 
 Si vous choisissez de lire (read) vous serez demander quel fichier vous voulez lire, 
 si ce fichier n'existe pas la question vous sera reposer 
