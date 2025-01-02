@@ -183,24 +183,21 @@ class file_csv():
                         writer.writerows(sorted_lines)
 
     def what_to_do(self):
-        """
-        Préconditions:
-        - L'utilisateur fournit une commande valide parmi: r, w, m, s, exit
 
-        Postconditions:
-        - Exécute l'action correspondant à la commande.
-        - Relance le menu en cas d'entrée incorrecte.
-        """
-        first_input = input('read [r] write [w] merge [m] sort [s] quit [exit]'
-                            + '\nWhat do you want to do ? : ')
+        parser = argparse.ArgumentParser(description="A script to read, write, merge and sort CSV files.")
+        parser.add_argument("action", choices=["write", "read", "merge", "sort"], help="Action à effectuer", nargs="?")
+        args = parser.parse_args()
 
-        if first_input == 'w':
+        if not args.action:
+            print("Plase enter a valid option ['write', 'read', 'merge', 'sort']")
+
+        elif args.action == 'write':
             self.write_option()
 
-        elif first_input == 'm':
+        elif args.action == 'merge':
             self.merge_csv('CSV', 'merged_csv', 'merge.csv')
 
-        elif first_input == 'r':
+        elif args.action == 'read':
             read = input('Which file do you want to read ? : ')
 
             try:
@@ -210,18 +207,12 @@ class file_csv():
                 print('The file that you typed does not exist')
                 self.what_to_do()
 
-        elif first_input == 's':
+        elif args.action == 'sort':
             self.sort_csv('merged_csv', 'merge.csv')
-
-        elif first_input == 'exit':
-            exit()
-
-        else:
-            print("Plase enter a valid option")
-            self.what_to_do()
 
 
 if __name__ == '__main__':
 
     test = file_csv()
     test.what_to_do()
+
