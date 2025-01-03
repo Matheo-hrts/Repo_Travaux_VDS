@@ -13,8 +13,10 @@ class Fraction:
     def __init__(self, num=0, den=1):
         """This builds a fraction based on some numerator and denominator.
 
-        PRE : ?
-        POST : ?
+        PRE : num and den are integers.
+        POST : The fraction is initialized in its reduced form.
+        RAISE : TypeError if num or den are not integers.
+                ValueError if den is 0.
         """
         if not isinstance(num, int) or not isinstance(den, int):
             raise TypeError("Numerator and denominator must be integers.")
@@ -38,21 +40,21 @@ class Fraction:
 
 # ------------------ Textual representations ------------------
 
-    def __str__(self) :
+    def __str__(self):
         """Return a textual representation of the reduced form of the fraction
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns a string representation in the form "num/den".
         """
         return f"{self.__num}/{self.__den}"
 
-    def as_mixed_number(self) :
+    def as_mixed_number(self):
         """Return a textual representation of the reduced form of the fraction as a mixed number
 
-        A mixed number is the sum of an integer and a proper fraction
+        A mixed number is the sum of an integer and a proper fraction.
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns a string representation as a mixed number or fraction.
         """
         if abs(self.__num) < self.__den:
             return str(self)
@@ -68,10 +70,10 @@ class Fraction:
     def __add__(self, other):
         """Overloading of the + operator for fractions
 
-         PRE : ?
-         POST : ?
-         """
-        if not isinstance(other, Fraction) :
+        PRE : None.
+        POST : Returns a new Fraction representing the sum.
+        """
+        if not isinstance(other, Fraction):
             other = Fraction(other)
 
         new_num = self.__num * other.__den + other.__num * self.__den
@@ -79,134 +81,122 @@ class Fraction:
 
         return Fraction(new_num, common_den)
 
-
     def __sub__(self, other):
         """Overloading of the - operator for fractions
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns a new Fraction representing the difference.
         """
-        if not isinstance(other, Fraction) :
+        if not isinstance(other, Fraction):
             other = Fraction(other)
 
         new_num = self.__num * other.__den - other.__num * self.__den
         common_den = self.__den * other.__den
         return Fraction(new_num, common_den)
 
-
     def __mul__(self, other):
         """Overloading of the * operator for fractions
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns a new Fraction representing the product.
         """
-        if not isinstance(other, Fraction) :
+        if not isinstance(other, Fraction):
             other = Fraction(other)
 
         new_num = self.__num * other.__num
         new_den = self.__den * other.__den
         return Fraction(new_num, new_den)
 
-
     def __truediv__(self, other):
         """Overloading of the / operator for fractions
 
-        PRE : ?
-        POST : ?
-        RAISES : ?
+        PRE : None.
+        POST : Returns a new Fraction representing the quotient.
+        RAISE : ValueError if other is zero.
         """
-        if not isinstance(other, Fraction) :
+        if not isinstance(other, Fraction):
             other = Fraction(other)
 
-        if(other.is_zero()) :
-            raise ValueError('le denominateur ne peux être égale a 0')
+        if other.is_zero():
+            raise ValueError("Denominator cannot be zero.")
         return self * Fraction(other.__den, other.__num)
-
 
     def __pow__(self, other):
         """Overloading of the ** operator for fractions
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns a new Fraction representing the power.
         """
-        if not isinstance(other, Fraction) :
+        if not isinstance(other, Fraction):
             other = Fraction(other)
 
         exp = other.__num / other.__den
         new_num = self.__num ** exp
         new_den = self.__den ** exp
         return Fraction(int(new_num), int(new_den))
-    
-    
-    def __eq__(self, other) : 
+
+    def __eq__(self, other):
         """Overloading of the == operator for fractions
-        
-        PRE : ?
-        POST : ?
+
+        PRE : None.
+        POST : Returns True if the fractions are equal, False otherwise.
         """
-        if not isinstance(other, Fraction) :
+        if not isinstance(other, Fraction):
             other = Fraction(other)
         
         return self.__num == other.__num and self.__den == other.__den
 
-        
-    def __float__(self) :
+    def __float__(self):
         """Returns the decimal value of the fraction
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns the decimal representation of the fraction.
         """
-        return self.__num/self.__den
-    
-# TODO : [BONUS] You can overload other operators if you wish (ex : <, >, ...)
-
-
+        return self.__num / self.__den
 
 # ------------------ Properties checking  ------------------
 
     def is_zero(self):
         """Check if a fraction's value is 0
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns True if the fraction is 0, False otherwise.
         """
         return self.__num == 0
-
 
     def is_integer(self):
         """Check if a fraction is integer (ex : 8/4, 3, 2/2, ...)
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns True if the fraction is an integer, False otherwise.
         """
         return (self.__num % self.__den) == 0
 
     def is_proper(self):
         """Check if the absolute value of the fraction is < 1
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns True if the fraction is proper, False otherwise.
         """
         return abs(self.__num) < abs(self.__den)
 
     def is_unit(self):
         """Check if a fraction's numerator is 1 in its reduced form
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns True if the numerator is 1, False otherwise.
         """
         return self.__num == 1
-        
 
-    def is_adjacent_to(self, other) :
+    def is_adjacent_to(self, other):
         """Check if two fractions differ by a unit fraction
 
         Two fractions are adjacents if the absolute value of the difference them is a unit fraction
 
-        PRE : ?
-        POST : ?
+        PRE : None.
+        POST : Returns True if the fractions are adjacent, False otherwise.
         """
-        if not isinstance(other, Fraction) :
+        if not isinstance(other, Fraction):
             other = Fraction(other)
 
         num_diff = abs(self.__num * other.__den - self.__den * other.__num)
