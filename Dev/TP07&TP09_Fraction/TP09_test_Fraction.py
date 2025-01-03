@@ -33,10 +33,10 @@ class FactTestCase(unittest.TestCase) :
         test3 = Fraction(54,22)
         test4 = Fraction(186, 3823)
         test5 = Fraction(901,2)
-        self.assertEqual(str(test1.as_mixed_number()),'la fonction est propre et ne peux pas etre convertie en nombre mixte', 'Fraction mixed')
-        self.assertEqual(str(test2.as_mixed_number()),'la fonction est propre et ne peux pas etre convertie en nombre mixte', 'Fraction mixed')
-        self.assertEqual(str(test4.as_mixed_number()),'la fonction est propre et ne peux pas etre convertie en nombre mixte', 'Fraction mixed')
-        self.assertEqual(str(test3.as_mixed_number()),'2*10/22', 'Fraction mixed')
+        self.assertEqual(str(test1.as_mixed_number()),'2/3', 'Fraction mixed')
+        self.assertEqual(str(test2.as_mixed_number()),'-8/13', 'Fraction mixed')
+        self.assertEqual(str(test4.as_mixed_number()),'186/3823', 'Fraction mixed')
+        self.assertEqual(str(test3.as_mixed_number()),'2*5/11', 'Fraction mixed')
         self.assertEqual(str(test5.as_mixed_number()),'450*1/2', 'Fraction mixed')
 
     def test_add(self):
