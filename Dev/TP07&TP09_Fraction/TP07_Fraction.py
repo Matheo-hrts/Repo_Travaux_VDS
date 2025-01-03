@@ -147,13 +147,7 @@ class Fraction:
         if not isinstance(other, Fraction) :
             other = Fraction(other)
         
-        gcd_self = math.gcd(self.__num, self.__den)
-        gcd_other = math.gcd(other.__num, other.__den)
-        reduced_self_num = self.__num // gcd_self
-        reduced_self_den = self.__den // gcd_self
-        reduced_other_num = other.__num // gcd_other
-        reduced_other_den = other.__den // gcd_other
-        return reduced_self_num == reduced_other_num and reduced_self_den == reduced_other_den
+        return self.__num == other.__num and self.__den == other.__den
 
         
     def __float__(self) :
@@ -201,8 +195,7 @@ class Fraction:
         PRE : ?
         POST : ?
         """
-        gcd = math.gcd(self.__num, self.__den)
-        return (self.__num // gcd) == 1
+        return self.__num == 1
         
 
     def is_adjacent_to(self, other) :
