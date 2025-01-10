@@ -72,6 +72,7 @@ class Fraction:
 
         PRE : None.
         POST : Returns a new Fraction representing the sum.
+        RAISE : ValueError if other is not an int or a fraction or convertible to an int.
         """
         if not isinstance(other, Fraction):
             other = Fraction(other)
